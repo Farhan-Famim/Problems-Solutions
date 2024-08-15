@@ -1,0 +1,39 @@
+//1853A - Desorting
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int a;
+        cin >> a;
+
+        int diff=INT_MAX, prev, curr, res;
+
+        cin >> prev; // first element
+
+        for(int i=2; i<=a; i++){
+            cin >> curr;
+
+            diff = min(curr-prev, diff);
+
+            prev = curr;
+        }
+
+        if(diff<0)
+            res = 0;
+
+        else
+            res = floor(diff/2) + 1;
+
+        cout << "RESULT: " <<  res << endl;
+    }
+    return 0;
+}
