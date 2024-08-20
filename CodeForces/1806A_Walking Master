@@ -1,0 +1,47 @@
+//https://codeforces.com/problemset/problem/1806/A
+// 1806A - Walking Master
+
+/*
+The point cannot go downward, so if y2<y1 then answer is -1.
+
+When y1<=y2, 
+1. Move the point at the same height as the target point.
+2. When they are in the same height,
+    point cannot move rightward, so if x2>x1 then answer is -1.
+    Otherwise, move the point leftward to match with the target point's position.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int x1, y1, x2, y2, cnt=0;
+        cin >> x1 >> y1 >> x2 >> y2;
+
+        if(y2<y1)
+                cnt = -1;
+
+        else {
+            cnt += y2 - y1; // to up
+            x1 += cnt;      // new position
+            y1 += cnt;
+
+            if(x2>x1)
+                cnt = -1;
+
+            else
+                cnt += x1 - x2; // to left
+        }
+
+        cout << cnt << endl;
+    }
+    return 0;
+}
