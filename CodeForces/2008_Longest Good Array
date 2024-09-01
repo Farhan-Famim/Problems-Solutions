@@ -1,0 +1,38 @@
+// https://codeforces.com/contest/2008/problem/C
+// 2008C  Longest good array
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int l,r;
+        cin >> l >> r;
+
+        int addi=0, res=0;
+
+        if(l==r)
+            res = 1;
+
+        else{
+            while(l<r){
+                res++;
+                l += addi;
+                addi++;
+            }
+
+            if(l > r)
+                res--;
+        }
+
+        cout << res << endl;
+    }
+    return 0;
+}
